@@ -1,0 +1,67 @@
+{
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist@1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.red_folder.phonegap.plugin.backgroundservice": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Red-Folder/bgs-core.git",
+            "subdir": "."
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "de.appplant.cordova.plugin.background-mode": {
+        "source": {
+            "type": "local",
+            "path": "/home/pubmatic/android/plugins/cordova-plugin-background-mode-master"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.apache.cordova.device": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.device"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "cordova-plugin-bluetooth-status": {
+        "source": {
+            "type": "local",
+            "path": "/home/pubmatic/android/plugins/cordova-plugin-bluetooth-status-master"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.dsquare.controllerplugin": {
+        "source": {
+            "type": "local",
+            "path": "/home/pubmatic/android/plugins/Middleware"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.megster.cordova.bluetoothserial": {
+        "source": {
+            "type": "local",
+            "path": "/home/pubmatic/android/plugins/BluetoothSerial-master"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "at.gofg.sportscomputer.powermanagement": {
+        "source": {
+            "type": "local",
+            "path": "/home/pubmatic/android/plugins/cordova-plugin-powermanagement-master_boltex"
+        },
+        "is_top_level": true,
+        "variables": {}
+    }
+}

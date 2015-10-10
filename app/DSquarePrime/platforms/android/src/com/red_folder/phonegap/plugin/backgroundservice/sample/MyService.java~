@@ -1,0 +1,232 @@
+package com.red_folder.phonegap.plugin.backgroundservice.sample;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.util.Log;
+
+import com.red_folder.phonegap.plugin.backgroundservice.BackgroundService;
+
+import com.dsquare.DBHandler;
+import com.dsquare.CurrentState;
+import android.content.Intent;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.reflect.Method;
+import java.util.UUID;
+
+public class MyService extends BackgroundService {
+	
+	private final static String TAG = MyService.class.getSimpleName();
+	 private BluetoothAdapter btAdapter = null;
+  private BluetoothSocket btSocket = null;
+//BluetoothSocketWrapper btSocket2 = null;
+  private OutputStream outStream = null;
+ String log = "";
+  // SPP UUID service
+  private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+ 
+  // MAC-address of Bluetooth module (you must edit this line)
+  private static String address = "20:14:12:03:13:38";
+ 
+	private String mHelloTo = "World";
+	private Integer intensity = 0; 
+	@Override
+	protected JSONObject doWork() {
+		JSONObject result = new JSONObject();
+		
+		try {
+			SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
+			String now = df.format(new Date(System.currentTimeMillis())); 
+
+			String msg = "Hello Pavatya " + this.mHelloTo + " - its currently " + now;
+			result.put("Message", log);
+
+			Log.d(TAG, msg);
+
+			// read from DB and write 
+			DBHandler dbHandler = new DBHandler(this);
+			List<CurrentState> currentStateList = dbHandler.getAllCurrentStates();
+			boolean data = (currentStateList!=null&&currentStateList.size()>0)?true:false;
+			// loop over list to send data to bluetooth
+			
+intensity = intensity+1;
+			sendData("123");
+sendData("1");
+sendData(""+intensity);
+sendData(""+(intensity-1));
+			
+			//CurrentState state = new CurrentState(1,1,intensity++);
+			//dbHandler.updateCurrentState(state);
+			//currentStateList = dbHandler.getAllCurrentStates();
+			//result.put("Message", currentStateList.toString());
+			
+		} catch (JSONException e) {
+
+		}
+		
+		return result;	
+	}
+
+private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {
+      
+          try {
+              final Method  m = device.getClass().getMethod("createInsecureRfcommSocketToServiceRecord", new Class[] { UUID.class });
+              return (BluetoothSocket) m.invoke(device, MY_UUID);
+          } catch (Exception e) {
+              Log.e(TAG, "Could not create Insecure RFComm Connection",e);
+		log=log+"Could not create Insecure RFComm Connection";
+          }
+      
+      return  device.createRfcommSocketToServiceRecord(MY_UUID);
+  }
+private void checkBTState() {
+    // Check for Bluetooth support and then check to make sure it is turned on
+    // Emulator doesn't support Bluetooth and will return null
+    if(btAdapter==null) {
+      //errorExit("Fatal Error", "Bluetooth not support");
+	log=log+"BT is not available";
+    } else {
+      if (btAdapter.isEnabled()) {
+        Log.d(TAG, "...Bluetooth ON...");
+	log=log+"BT is on";
+      } else {
+	log=log+"BT is disabled";
+        //Prompt user to turn on Bluetooth
+        //Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+        //startActivityForResult(enableBtIntent, 1);
+      }
+    }
+  }
+	protected void connectToBT(){
+	btAdapter = BluetoothAdapter.getDefaultAdapter();
+	checkBTState();
+	Log.d(TAG, "...onResume - try connect...");
+ 
+    // Set up a pointer to the remote node using it's address.
+    BluetoothDevice device = btAdapter.getRemoteDevice(address);
+ 
+    // Two things are needed to make a connection:
+    //   A MAC address, which we got above.
+    //   A Service ID or UUID.  In this case we are using the
+    //     UUID for SPP.
+ 
+ /*   try {
+        btSocket = device.createRfcommSocketToServiceRecord(MY_UUID);//createBluetoothSocket(device);
+    } catch (IOException e1) {
+        //errorExit("Fatal Error", "In onResume() and socket create failed: " + e1.getMessage() + ".");
+log=log+"In onResume() and socket create failed: " + e1.getMessage() + ".";
+    }
+ 
+    // Discovery is resource intensive.  Make sure it isn't going on
+    // when you attempt to connect and pass your message.
+    btAdapter.cancelDiscovery();
+ 
+    // Establish the connection.  This will block until it connects.
+    Log.d(TAG, "...Connecting...");
+    try {
+      btSocket.connect();
+      Log.d(TAG, "...Connection ok...");
+    } catch (Exception e) {
+log=log+"failed while connecting - "+ e.getMessage() + ". trying fallback. ";
+try {
+        btSocket = createBluetoothSocket(device);
+	btSocket.connect();
+    } catch (IOException e1) {
+        //errorExit("Fatal Error", "In onResume() and socket create failed: " + e1.getMessage() + ".");
+log=log+"In fallback and socket create failed: " + e1.getMessage() + ".";
+try {
+        btSocket.close();
+      } catch (IOException e2) {
+	log=log+"failed while closing - "+ e2.getMessage() + ".";
+        //errorExit("Fatal Error", "In onResume() and unable to close socket during connection failure" + e2.getMessage() + ".");
+      }
+    }
+      
+    }
+ */
+BluetoothConnector btConnector = new BluetoothConnector(device, false, btAdapter, null);
+try {
+      btSocket = btConnector.connect();
+    } catch (IOException e) {
+		log=log+"socket connect creation failed:" + e.getMessage() + ".";
+      //errorExit("Fatal Error", "In onResume() and output stream creation failed:" + e.getMessage() + ".");
+    }
+    // Create a data stream so we can talk to server.
+    Log.d(TAG, "...Create Socket...");
+ 
+    try {
+      outStream = btSocket.getOutputStream();
+	//outStream = btConnector.getOutputStream();
+    } catch (IOException e) {
+		log=log+"output stream creation failed:" + e.getMessage() + ".";
+      //errorExit("Fatal Error", "In onResume() and output stream creation failed:" + e.getMessage() + ".");
+    }
+
+}
+private void sendData(String message) {
+    byte[] msgBuffer = message.getBytes();
+ 
+    Log.d(TAG, "...Send data: " + message + "...");
+ 
+    try {
+      outStream.write(msgBuffer);
+    } catch (IOException e) {
+			log=log+"In sendData() and an exception occurred during write: " + e.getMessage();
+      String msg = "In onResume() and an exception occurred during write: " + e.getMessage();
+      if (address.equals("00:00:00:00:00:00"))
+        msg = msg + ".\n\nUpdate your server address from 00:00:00:00:00:00 to the correct address on line 35 in the java code";
+        msg = msg +  ".\n\nCheck that the SPP UUID: " + MY_UUID.toString() + " exists on server.\n\n";
+ 
+        //errorExit("Fatal Error", msg);
+    }
+  }
+	@Override
+	protected JSONObject getConfig() {
+		JSONObject result = new JSONObject();
+		
+		try {
+			result.put("HelloTo", this.mHelloTo);
+		} catch (JSONException e) {
+		}
+		
+		return result;
+	}
+
+	@Override
+	protected void setConfig(JSONObject config) {
+		try {
+			if (config.has("HelloTo"))
+				this.mHelloTo = config.getString("HelloTo");
+		} catch (JSONException e) {
+		}
+		
+	}     
+
+	@Override
+	protected JSONObject initialiseLatestResult() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected void onTimerEnabled() {
+		// TODO Auto-generated method stub
+		connectToBT();
+	}
+
+	@Override
+	protected void onTimerDisabled() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+}

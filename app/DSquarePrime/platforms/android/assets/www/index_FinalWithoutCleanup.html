@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>Prime</title>
+
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/custom_slider.css" rel="stylesheet">
+<link href="css/app.css" rel="stylesheet">
+<link href="js/prettify.css" rel="stylesheet">
+<link href="css/bootstrap-switch.css" rel="stylesheet">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body background="images/background.jpg">
+	<div class="container-fluid">
+		<div class="row" >
+			<div class="col-md-12">
+				<div class="row" style="padding-top:2%">				
+				
+					<div class="col-md-3" id="logo" style="padding-left:2%">
+						<img id="logo-img" alt="" src="./images/logo.png" height="50" width="80">
+					</div>
+					<div class="col-md-6" id="companyName" style="text-align:center">
+						<h3 style="color:white;margin-top:10px">DSquare System</h3>
+						<span style="color:white" id="error"></span>
+					</div>
+					<div class="col-md-3" style="text-align:right;padding-right:2%">
+						<img id = "powerBtn" alt="" src="./images/power-red.png" height="50" width="50">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6" style="padding-top: 1%;padding-right: 1%;padding-bottom: 0%;padding-left: 5%; ">
+						<div id="dimmer1" class="row" style="padding: 2%; ">
+							<div class="myslider" style="padding-bottom: 11%; padding-top: 5%; padding-left: 2%;padding-right: 2%; ">
+							<div id="bulb1Div" class="col-md-2 dimmer">
+								<img id="dimmer1-slider-bulb" alt="" src="./images/bulb-off.png" height="50" width="50">
+							</div>
+							<div class="col-md-10" style="padding-top:2%">
+								<input type="text" value="0" id="dimmer1-slider" size=35
+									data-slider-min="0" data-slider-max="100" data-slider-step="1"
+									data-slider-value="0" data-slider-orientation="horizontal"
+									data-slider-selection="before" data-slider-tooltip="show">
+								<span id="dimmer1-slider-perc" style="display:none">0</span>
+								<span id="dimmer1-slider-id" style="display:none">1</span>
+							</div>
+							</div>
+						</div>
+						<div  id="dimmer2" class="row" style="padding: 2%; ">
+							<div class="myslider" style="padding-bottom: 11%; padding-top: 5%; padding-left: 2%;padding-right: 2%; ">
+							<div id="bulb2Div" class="col-md-2">
+								<img id="dimmer2-slider-bulb" alt="" src="./images/bulb-off.png" height="50" width="50">
+							</div>
+							<div class="col-md-10"  style="padding-top:2%">
+								<input type="text" value="0" id="dimmer2-slider" size=35
+									data-slider-min="0" data-slider-max="100" data-slider-step="1"
+									data-slider-value="0" data-slider-orientation="horizontal"
+									data-slider-selection="before" data-slider-tooltip="show">
+							<span id="dimmer2-slider-perc" style="display:none">0</span>		
+								<span id="dimmer2-slider-id" style="display:none">2</span>
+							</div>
+							</div>
+						</div>
+						<div id="dimmer3" class="row" style="padding: 2%; ">
+							<div class="myslider" style="padding-bottom: 11%; padding-top: 5%; padding-left: 2%;padding-right: 2%; ">
+							<div id="bulb3Div" class="col-md-2">
+								<img id="dimmer3-slider-bulb" alt="" src="./images/bulb-off.png" height="50" width="50">
+							</div>
+							<div class="col-md-10"  style="padding-top:2%">
+								<input type="text" value="0" id="dimmer3-slider" size=35
+									data-slider-min="0" data-slider-max="100" data-slider-step="1"
+									data-slider-value="0" data-slider-orientation="horizontal"
+									data-slider-selection="before" data-slider-tooltip="show">
+								<span id="dimmer3-slider-perc" style="display:none">0</span>
+								<span id="dimmer3-slider-id" style="display:none">3</span>
+							</div>
+							</div>
+						</div>
+						<div id="dimmer4" class="row" style="padding: 2%; ">
+							<div class="myslider" style="padding-bottom: 11%; padding-top: 5%; padding-left: 2%;padding-right: 2%; ">
+							<div id="bulb4Div" class="col-md-2">
+								<img id="dimmer4-slider-bulb" alt="" src="./images/bulb-off.png" height="50" width="50">
+							</div>
+							<div class="col-md-10"  style="padding-top:2%">
+								<input type="text" value="0" id="dimmer4-slider" size=35
+									data-slider-min="0" data-slider-max="100" data-slider-step="1"
+									data-slider-value="0" data-slider-orientation="horizontal"
+									data-slider-selection="before" data-slider-tooltip="show">
+								<span id="dimmer4-slider-perc" style="display:none">0</span>
+								<span id="dimmer4-slider-id" style="display:none">4</span>
+							</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="row  rcorners2" style="padding-top: 5%;padding-right: 20%;padding-bottom: 18%;padding-left: 20%; border:1px; color:white;">
+							<div class="col-md-12 " style="text-align:center;">
+								<h2>Energy Saving</h2>
+								<p><h3 id="energySaving"></h3></p>
+							</div>
+						</div>
+						<div class="row" style="padding-bottom: 3%; ">
+							<div id="bulb5Div" class="col-md-6" style="text-align: right;padding-right: 10%;">
+								<img  id="bulb5-Switch-img" alt="" src="./images/bulb-off.png" height="50" width="50">
+								<span id="bulb5-Switch-id" style="display:none">5</span>
+							</div>
+							<!--<div id="bulb5SwitchDiv" class="col-md-3 rcorners2"  style="padding-top:1%;text-align: left">
+								<input id="bulb5-Switch" type="checkbox" name="my-checkbox1">
+								<span id="bulb5-Switch-id" style="display:none">5</span>
+							</div>-->
+							<div id="bulb6Div" class="col-md-6" style="text-align: left;padding-left: 10%;">
+								<img id="bulb6-Switch-img" alt="" src="./images/bulb-off.png" height="50" width="50">
+								<span id="bulb6-Switch-id" style="display:none">6</span>
+							</div>
+							<!--<div id="bulb6SwitchDiv"  class="col-md-3 rcorners2"  style="padding-top:1%;text-align: left">
+								<input id="bulb6-Switch" type="checkbox" name="my-checkbox2">
+								<span id="bulb6-Switch-id" style="display:none">6</span>
+							</div>-->
+						</div>
+						<div class="row" style="padding-top: 3%; ">
+							<!--<div id="playDiv2" class="col-md-3 rcorners2" style="text-align:right;padding-top:7%">
+								
+							</div>-->
+							<div id="playDiv" class="col-md-6" style="text-align:right;padding-right: 10%;">
+								<img id="play-img" alt="" src="./images/play.png" height="50" width="50">
+							</div>
+							<div id="saveDiv" class="col-md-6" style="text-align:left;padding-left: 10%;">
+								<img id="save-img" alt="" src="./images/save.png" height="50" width="50">
+							</div>
+							<!--<div id="playDiv4" class="col-md-3 rcorners2" style="text-align:right;padding-top:7%">
+								
+							</div>-->
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script  type= "application/javascript"
+		src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+	 <script type="text/javascript" src="ControllerPlugin.js"></script>
+	 <script type="text/javascript" src="bluetoothSerial.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script  type= "application/javascript" src="js/bootstrap.min.js"></script>
+	<script  type= "application/javascript" src="js/bootstrap-slider.js"></script>
+	<script  type= "application/javascript" src="js/modernizr.js"></script>
+     <script  type= "application/javascript" src="js/prettify.js"></script>
+     <script type= "application/javascript" src="js/bootstrap-switch.js"></script>
+	<script  type= "application/javascript" type= "application/javascript">
+     
+$(function() {
+//	-------- Not fired from here----- Need to reload the state ----- //ControllerPlugin.reloadData("reload");
+     document.addEventListener("deviceready", onDeviceReady, false);
+     //readCurrentState();
+     });
+     /*window.addEventListener('BluetoothStatus.enabled', function() {
+    			$("#error").html('-------Bluetooth has been enabled-------------');
+    			sleep(4000);
+			});
+			window.addEventListener('BluetoothStatus.disabled', function() {
+    		$("#error").html(('-----------Bluetooth has been disabled--------------');
+    		sleep(4000);
+		});*/
+     function onDeviceReady() {
+    // do everything here.
+window.prettyPrint && prettyPrint();
+     $("[name='my-checkbox1']").bootstrapSwitch();
+     $("[name='my-checkbox2']").bootstrapSwitch();
+    var counter = 0;
+	// reload the last saved state of     
+    readCurrentState();
+    	
+	var sent = 0;
+/*
+	var myService = cordova.plugins.myService;
+	myService.startService(	function(r){handleSuccess(r)},
+										function(e){handleError(e)});
+										
+	myService.enableTimer(	3000,
+										function(r){handleSuccess(r)},
+										function(e){handleError(e)});	
+	myService.registerForBootStart(	function(r){handleSuccess(r)},
+												function(e){handleError(e)});
+	myService.registerForUpdates(	function(r){readLog(r)},
+												function(e){handleError(e)});
+												
+	function readLog(data) {
+				 $("#error").html(JSON.stringify(data)+" - "+count++);
+ 				 //$("#companyName").html(data);
+ 			}
+	function handleSuccess(data) {
+				 $("#companyName").html($("#companyName").html()+"service methode success");
+ 				 //$("#companyName").html(data);
+ 			}
+ 			
+ 			function handleError(data) {
+ 				$("#companyName").html($("#companyName").html()+"service methode error");
+				//$("#companyName").html(data);
+ 			}
+ 		*/
+ 		if(!cordova.plugins.backgroundMode.isActive()){
+ 			cordova.plugins.backgroundMode.setDefaults({ text:'Home Automation System'});
+ 			cordova.plugins.backgroundMode.enable();
+ 		}
+ 		
+		window.powerManagement.acquire(function() {
+    		//$("#companyName").html($("#companyName").html()+'Wakelock acquired');
+		}, function() {
+    		//$("#companyName").html($("#companyName").html()+'Failed to acquire wakelock');
+		}); 		
+ 		
+ 		
+ 		//sleep(5000);
+ 		 /*cordova.plugins.backgroundMode.onactivate = function () {
+        setTimeout(function () {
+            // Modify the currently displayed notification
+            cordova.plugins.backgroundMode.configure({
+                text:'Running in background for more than 5s now.'
+            });
+        }, 5000);*/
+ 		//$("#companyName").html($("#companyName").html()+" background mode - "+cordova.plugins.backgroundMode.isActive());
+	setInterval(function(){ bluetoothSerial.isEnabled(
+            listPorts,
+            notEnabled
+        );  }, 4000);   
+    /*bluetoothSerial.isEnabled(
+            listPorts,
+            notEnabled
+        );*/
+    function listPorts() {
+            // list the available BT ports:
+            
+            /*bluetoothSerial.list(
+                function(results) {
+                    $("#companyName").html($("#companyName").html()+JSON.stringify(results));
+                },
+                function(error) {
+                    $("#companyName").html($("#companyName").html()+JSON.stringify(error));
+                }
+            );*/
+            
+            // connect to device
+            isBTConnected();
+        }
+        
+         // if isEnabled returns failure, this function is called:
+        function notEnabled() {
+            $("#error").html("Not Connected To Home.");
+            //bluetoothSerial.enable(btEnabled, btNotEnabled);
+            cordova.plugins.BluetoothStatus.enableBT();
+            //sleep(4000);
+        }
+        
+			/*window.addEventListener('BluetoothStatus.enabled', function() {
+    			$("#error").html('-------Bluetooth has been enabled-------------');
+    			sleep(4000);
+			});*/        
+        
+        /*function btEnabled() {
+            $("#error").html("");
+        }
+		function btNotEnabled() {
+            $("#error").html("Bluetooth is not enabled.");
+        }*/
+        function isBTConnected(){
+    
+				bluetoothSerial.isConnected(
+    				function() {
+        				// $("#companyName").html($("#companyName").html()+" - connected - ");
+        				 //$("#error").html($("#error").html()+" connected already - ");
+        				 $("#logo-img").attr('src','./images/logo_white.png');   
+    				},
+    				function() {
+    					 //$("#error").html($("#error").html()+" not connected. connecting now - ");
+    					 sent = 0;
+        				// connect to device if not already connected
+          	  		//bluetoothSerial.connect("20:14:12:03:13:38", connectSuccess, onConnectError("1"));
+            		connectToBT();
+            		 //$("#error").html($("#error").html()+" sending current state - ");
+            		
+            		
+    				}
+				);    
+				// on connect send the current state to BT
+				bluetoothSerial.isConnected(
+    				function() {
+    				
+            		// on connect send the current state to BT
+						
+						if(sent!=4){       
+							//$("#error").html($("#error").html()+" sending current state - ");  
+							sent++;   		
+            			sendCurrentStateToBackend();
+            		}
+            		else{
+            			//$("#error").html($("#error").html()+" current state already sent - ");
+            		}
+            		
+        				
+    				},
+    				function() {
+    					 
+            		 //$("#error").html($("#error").html()+" not sending current state - ");
+    				}
+				);
+				
+				
+    		}
+        function sendCurrentStateToBackend() {
+				dimmer1 = parseInt($('#dimmer1-slider-perc').html());            
+            sendStateToBT(1,dimmer1);
+            dimmer2 = parseInt($('#dimmer2-slider-perc').html());
+            sendStateToBT(2,dimmer2);
+            dimmer3 = parseInt($('#dimmer3-slider-perc').html());
+            sendStateToBT(3,dimmer3);
+            dimmer4 = parseInt($('#dimmer4-slider-perc').html());
+            sendStateToBT(4,dimmer4);
+            switch1 = isOn('#bulb5-Switch-img')?100:0;
+				switch1 = parseInt(switch1);
+				sendStateToBT(5,switch1);
+				switch2 = isOn('#bulb6-Switch-img')?100:0;
+				switch2 = parseInt(switch2);
+				sendStateToBT(6,switch2);
+            
+        }
+        function sendStateToBT(dimmerId, value){
+				var dataToSend = [123, dimmerId, value, value-dimmerId];
+				sendDataToBT(dataToSend);
+			}	
+			function sendDataToBT(dataToSend){
+				bluetoothSerial.write([dataToSend[0]], dataWritten, failedToWrite);
+				sleep(30);
+				bluetoothSerial.write([dataToSend[1]], dataWritten, failedToWrite);
+				sleep(30);
+				bluetoothSerial.write([dataToSend[2]], dataWritten, failedToWrite);
+				sleep(30);
+				bluetoothSerial.write([dataToSend[3]], dataWritten, failedToWrite);
+				//onConnectError(code);
+		}
+    
+$('#dimmer1-slider').slider(
+    		{
+    	        formater: function(value) {
+    	          return value+'%';
+    	        }
+    	      }
+    		);
+    
+    $('#dimmer2-slider').slider(
+    		{	
+    	        formater: function(value) {
+    	          return value+'%';
+    	        }
+    	      }
+    		);
+    
+   
+    
+    $('#dimmer3-slider').slider(
+    		{
+    	        formater: function(value) {
+    	          return value+'%';
+    	        }
+    	      }
+    		);
+    
+    $('#dimmer4-slider').slider(
+    		{
+    	        formater: function(value) {
+    	          return value+'%';
+    	        }
+    	      }
+    		);
+    
+    calculateSaving();
+$('#save-img').click(function(){
+			
+			//prepare a json for all bulbs
+			//var one; var two; var three; var four; var five; var six;
+			dimmer1 = parseInt($('#dimmer1-slider-perc').html());
+			one = "";
+			if(dimmer1>0){
+				one = '"1":{"state":"1","intensity":"'+dimmer1+'"}';
+			}
+			else{
+				one = '"1":{"state":"0","intensity":"0"}';
+			}
+			dimmer2 = parseInt($('#dimmer2-slider-perc').html());
+			if(dimmer2>0)
+				two = '"2":{"state":"1","intensity":"'+dimmer2+'"}';
+			else
+				two = '"2":{"state":"0","intensity":"0"}';
+			dimmer3 = parseInt($('#dimmer3-slider-perc').html());
+			if(dimmer3>0)
+				three = '"3":{"state":"1","intensity":"'+dimmer3+'"}';
+			else
+				three = '"3":{"state":"0","intensity":"0"}';
+			dimmer4 = parseInt($('#dimmer4-slider-perc').html());
+			if(dimmer4>0)
+				four = '"4":{"state":"1","intensity":"'+dimmer4+'"}';
+			else
+				four = '"4":{"state":"0","intensity":"0"}';
+
+			switch1 = isOn('#bulb5-Switch-img')?100:0;
+			if(switch1>0)
+				five = '"5":{"state":"1","intensity":"'+switch1+'"}';
+			else
+				five = '"5":{"state":"0","intensity":"0"}';
+    			switch2 = isOn('#bulb6-Switch-img')?100:0;
+			if(switch2>0)
+				six = '"6":{"state":"1","intensity":"'+switch2+'"}';
+			else
+				six = '"6":{"state":"0","intensity":"0"}';
+			count = '"count":"6"';
+			moodJSON = '{'+one+','+two+','+three+','+four+','+five+','+six+','+count+'}';
+		   ControllerPlugin.saveMood("saveMood",moodJSON);
+         
+         
+         
+         });
+   
+        
+    function calculateSaving(){
+
+      	count = 6;
+    	dimmer1 = parseInt($('#dimmer1-slider-perc').html());
+    	/* if(dimmer1>0){
+    		count++;
+
+    	} */
+    	//console.log('dimmer1 = '+dimmer1);
+    	dimmer2 = parseInt($('#dimmer2-slider-perc').html());
+    	/* if(dimmer2>0){
+
+    		count++;
+
+    	} */
+    	//console.log('dimmer2 = '+dimmer2);
+    	dimmer3 = parseInt($('#dimmer3-slider-perc').html());
+    	/* if(dimmer3>0){
+    		count++;
+
+    	} */
+    	//console.log('dimmer3 = '+dimmer3);
+    	dimmer4 = parseInt($('#dimmer4-slider-perc').html());
+    	/* if(dimmer4>0){
+    		count++;
+    	} */
+    	//console.log('dimmer4 = '+dimmer4);
+    	switch1 = isOn('#bulb5-Switch-img')?100:0;
+    	switch2 = isOn('#bulb6-Switch-img')?100:0;
+    	/* if($('#bulb5-Switch-img').attr('src') && $('#bulb5-Switch-img').attr('src')=="./images/bulb-on.png"){
+    		switch1 = 100;
+    	} */
+    	/* if($('#bulb6-Switch-img').attr('src') && $('#bulb6-Switch-img').attr('src')=="./images/bulb-on.png"){
+    		switch2 = 100;
+    	} */
+    	switch1 = parseInt(switch1);
+    	/* if(switch1>0){
+    		count++;
+    	} */
+    	switch2 = parseInt(switch2);
+    	/* if(switch2>0){
+    		count++;
+    	} */
+    	//console.log('switch1 = '+switch1);
+    	//console.log('switch2 = '+switch2);
+    	burning = (dimmer1+dimmer2+dimmer3+dimmer4+switch1+switch2);
+    	//console.log('burning = '+burning+' out of '+count*100);
+    	burningPerc = 0;
+    	maxBurning = 100;
+    	if(parseInt(burning) == 0 || parseInt(count) == 0){
+    		burningPerc = 0;
+    		maxBurning = 100;
+    	}
+    	else{
+    		burningPerc = burning/count;
+    	}
+    	//console.log('burning = '+(burningPerc));
+    	
+    	$('#energySaving').html(parseInt(maxBurning-burningPerc)+'%');
+   	 
+    }
+
+        function isOn(dimmer){
+        	if($(dimmer).attr('src') && $(dimmer).attr('src')=="./images/bulb-on.png"){
+        		//console.log('dimmer - '+dimmer+' - true');
+        		return true;
+        	}
+        	else if($(dimmer).attr('src') && $(dimmer).attr('src')=="./images/bulb-off.png"){
+        		//console.log('dimmer - '+dimmer+' - false');
+        		return false;
+        	}
+        }
+    function bulbOnOff(dimmerId){
+    	dimmer = "#dimmer"+dimmerId+"-slider-bulb";
+    	if(isOn(dimmer)){
+       	 bulbOnOffOnFlag(dimmerId,0,1);
+        }
+        else if(!isOn(dimmer)){
+       	 bulbOnOffOnFlag(dimmerId,1,1);
+        }
+    	//dimmer1 = parseInt($(dimmer).slider('getValue')[0].value);
+    	//calculateSaving();
+    	
+    }
+    function bulbOnOffOnFlag(dimmerId, flag, updateDB){
+    	dimmer = "#dimmer"+dimmerId+"-slider-bulb";
+    	slider = "#dimmer"+dimmerId+"-slider";
+    	var dataToSend = [123, dimmerId, 0, 0-dimmerId];
+    	if(isOn(dimmer) && flag==0){
+    		dataToSend = [123, dimmerId, 0, 0-dimmerId];
+       	 $(dimmer).attr('src','./images/bulb-off.png') 
+       	 if(slider && $(slider)){
+       		$(slider).slider('setValue',0);
+		$(slider+'-perc').html(0)
+		if(updateDB==1){
+			ControllerPlugin.saveState('update', $(slider+"-id").html(), 0,0,1);
+		}
+				
+       	 }
+        }
+        else if(!isOn(dimmer) && flag==1){
+        	dataToSend = [123, dimmerId, 100, 100-dimmerId];
+       	 $(dimmer).attr('src','./images/bulb-on.png') 
+       	 if(slider && $(slider)){
+       		$(slider).slider('setValue',100);
+		$(slider+'-perc').html(100)
+		if(updateDB==1){
+			ControllerPlugin.saveState('update', $(slider+"-id").html(), 1,100,2);		
+		}
+       	 }
+        }
+       //$("#companyName").html($("#companyName").html()+" - data - "+dataToSend);
+		sendDataToBT(dataToSend);
+		/*		
+		bluetoothSerial.write([dataToSend[0]], dataWritten, failedToWrite);
+		sleep(30);
+		bluetoothSerial.write([dataToSend[1]], dataWritten, failedToWrite);
+		sleep(30);
+		bluetoothSerial.write([dataToSend[2]], dataWritten, failedToWrite);
+		sleep(30);
+		bluetoothSerial.write([dataToSend[3]], dataWritten, failedToWrite);
+		*/
+    	calculateSaving();
+    	
+    }
+    function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+    
+}
+    function allOff(){
+    	//bulbOnOffOnFlag('#dimmer1-slider-bulb','#dimmer1-slider',0,0);
+		//bulbOnOffOnFlag('#dimmer2-slider-bulb','#dimmer2-slider',0,0);
+		//bulbOnOffOnFlag('#dimmer3-slider-bulb','#dimmer3-slider',0,0);
+		//bulbOnOffOnFlag('#dimmer4-slider-bulb','#dimmer4-slider',0,0);
+		bulbOnOffOnFlag(1,0,1);
+		bulbOnOffOnFlag(2,0,1);
+		bulbOnOffOnFlag(3,0,1);
+		bulbOnOffOnFlag(4,0,1);
+		
+		switchOnOffOnFlag(5,0,1);
+		switchOnOffOnFlag(6,0,0);
+		ControllerPlugin.allOff('allOff', 6, 13);
+		
+		/*var dataToSend = [123, 1, 0, 0-1];		
+		bluetoothSerial.write(dataToSend, dataWritten, failedToWrite);
+		dataToSend = [123, 2, 0, 0-2];		
+		bluetoothSerial.write(dataToSend, dataWritten, failedToWrite);
+		dataToSend = [123, 3, 0, 0-3];		
+		bluetoothSerial.write(dataToSend, dataWritten, failedToWrite);
+		dataToSend = [123, 4, 0, 0-4];		
+		bluetoothSerial.write(dataToSend, dataWritten, failedToWrite);
+		dataToSend = [123, 5, 0, 0-5];		
+		bluetoothSerial.write(dataToSend, dataWritten, failedToWrite);
+		dataToSend = [123, 6, 0, 0-6];		
+		bluetoothSerial.write(dataToSend, dataWritten, failedToWrite);*/
+		
+    }
+    $('#bulb1Div').click(
+            	function(){
+            	//var dataToSend = [123, 1, 100, 100-1];
+            	//$("#companyName").html($("#companyName").html()+" - data - "+dataToSend);
+            	//bluetoothSerial.write(dataToSend, dataWritten, failedToWrite);
+        	        //bulbOnOff('#dimmer1-slider-bulb','#dimmer1-slider');
+        	        bulbOnOff(1);
+                }
+        );
+    $('#bulb2Div').click(
+        	function(){
+        //	var dataToSend = [123, 2, 100, 100-2];
+        	//	$("#companyName").html($("#companyName").html()+" - data - "+dataToSend);
+        //	bluetoothSerial.write(dataToSend, dataWritten, failedToWrite);
+        		 //bulbOnOff('#dimmer2-slider-bulb','#dimmer2-slider');
+        		 bulbOnOff(2);
+            }
+        		
+        );
+    
+    $('#bulb3Div').click(
+        	function(){
+        	//var dataToSend = [123, 3, 100, 100-3]; 
+        	//$("#companyName").html($("#companyName").html()+" - data - "+dataToSend);
+        	//bluetoothSerial.write(dataToSend, dataWritten, failedToWrite);
+        		 //bulbOnOff('#dimmer3-slider-bulb','#dimmer3-slider');
+        		 bulbOnOff(3);
+            }
+        		
+        );
+    
+    $('#bulb4Div').click(
+        	function(){
+        //	var dataToSend = [123, 4, 100, 100-4]; 
+        	//	$("#companyName").html($("#companyName").html()+" - data - "+dataToSend);
+        	//bluetoothSerial.write(dataToSend, dataWritten, failedToWrite);
+        		 //bulbOnOff('#dimmer4-slider-bulb','#dimmer4-slider');
+        		 bulbOnOff(4);
+            }
+        		
+        );
+        
+    $('#powerBtn').click(
+        	function(){
+        	//var dataToSend = [, 2, 40, 40-2]; 
+        	//	$("#companyName").html($("#companyName").html()+" - data - "+dataToSend);
+        //	bluetoothSerial.write(dataToSend, dataWritten, failedToWrite);
+        		 allOff();
+            }
+        		
+        );
+    
+    $('#bulb5Div').click(
+        	function(){
+        		//var dataToSend = [123, 5, 100, 100-5]; 
+				//bluetoothSerial.write(dataToSend, dataWritten, failedToWrite);
+        		switchOnOff(5);
+            }
+        		
+        );
+    $('#bulb6Div').click(
+    		
+        	function(){
+        			//var dataToSend = [123, 6, 100, 100-6]; 
+        			//bluetoothSerial.write(dataToSend, dataWritten, failedToWrite);
+        			switchOnOff(6);
+            }
+        	
+        );
+    function switchOnOff(switchId){
+    	//$(switchId).click();
+			
+    	         //change image - on/off
+    	        // if($(switchId+'-img').attr('src') && $(switchId+'-img').attr('src')=="./images/bulb-on.png"){
+    	         if(isOn('#bulb'+switchId+'-Switch-img')){
+    	        	 switchOnOffOnFlag(switchId,0,1);
+    	         }
+    	         else if(!isOn('#bulb'+switchId+'-Switch-img')){
+    	        	 switchOnOffOnFlag(switchId,1,1);
+    	         }
+    	         //calculateSaving();
+    }
+    function switchOnOffOnFlag(switchId, flag, updateDB){
+    	var swtichIdInt = switchId;
+    	var dataToSend = [123, swtichIdInt, 0, 0-switchId]; 
+    	  switchId = '#bulb'+switchId+'-Switch';
+			
+    	         //change image - on/off
+    	         if(flag==0 && isOn(switchId+'-img')){
+    	         	$(switchId).click();
+    	        	 	$(switchId+'-img').attr('src','./images/bulb-off.png');
+    	        	 	dataToSend = [123, swtichIdInt, 0, 0-swtichIdInt]; 
+				if(updateDB==1){
+					ControllerPlugin.saveState('update', $(switchId+"-id").html(), 0,0,3);
+				}
+						//ControllerPlugin.showToast('showMessage', '3');
+    	         }
+    	         else if(flag==1 && !isOn(switchId+'-img')){
+    	         	$(switchId).click();
+    	        	 	$(switchId+'-img').attr('src','./images/bulb-on.png');
+    	        	 	dataToSend = [123, swtichIdInt, 100, 100-swtichIdInt]; 
+				if(updateDB==1){
+					ControllerPlugin.saveState('update', $(switchId+"-id").html(), 1,100,4);
+				}
+						//ControllerPlugin.showToast('showMessage', '4');
+    	         }
+    	        // $("#companyName").html($("#companyName").html()+" - data - "+dataToSend);
+    	        // bluetoothSerial.write(dataToSend, dataWritten, failedToWrite);
+		sendDataToBT(dataToSend);
+		/*    	
+    	bluetoothSerial.write([dataToSend[0]], dataWritten, failedToWrite);
+		sleep(30);
+		bluetoothSerial.write([dataToSend[1]], dataWritten, failedToWrite);
+		sleep(30);
+		bluetoothSerial.write([dataToSend[2]], dataWritten, failedToWrite);
+		sleep(30);
+		bluetoothSerial.write([dataToSend[3]], dataWritten, failedToWrite);
+		*/
+    	         calculateSaving();
+    }
+$('#play-img').click(
+    		function(){
+        	setMood();
+        	}
+        );
+    function readCurrentState(){
+    	//$("#error").html("Reading current state."+(counter++));
+    	ControllerPlugin.reloadData("reload");
+    }
+    function setMood(){
+    	ControllerPlugin.setMood("setMood");
+    }
+    $("#logo").click(
+    		function(){
+        	connectToBT();
+        	}
+        );
+	     
+     function connectToBT(){
+    	//$("#companyName").html($("#companyName").html()+" - connect - ");
+		bluetoothSerial.connect("20:14:12:03:13:38", connectSuccess, onConnectError);
+		sleep(2000);
+		
+     }
+     function onConnectError(code){
+    	$("#logo-img").attr('src','./images/logo.png');
+    	//$("#error").html(code);
+    	bluetoothSerial.disconnect(disconnectDone, disconnectNotDone);
+    	cordova.plugins.BluetoothStatus.disableBT();
+    	//sleep(4000);
+     }
+     /*window.addEventListener('BluetoothStatus.disabled', function() {
+    		$("#error").html(('-----------Bluetooth has been disabled--------------');
+    		sleep(4000);
+		});*/
+     function disconnectDone(){
+      	//$("#error").html($("#error").html()+" disconnected - ");
+     
+    	
+     }
+ function disconnectNotDone(error){
+      //$("#error").html(" not disconnected - * "+error+" * ");
+     
+    	
+     }
+     function connectSuccess(){
+     //$("#companyName").html($("#companyName").html()+" - connected and listening - ");
+     	$("#error").html("");
+		$("#logo-img").attr('src','./images/logo_white.png');    	
+    	bluetoothSerial.subscribe('!', readData, failedToRead);
+    	sleep(2000);
+    	
+     }
+    function readData(inputData){
+    		$("#error").html("");
+		    //$("#error").html(" - incoming - "+inputData);
+		    $("#logo-img").attr('src','./images/logo_white.png'); 
+    }
+    function failedToRead(){
+		   // $("#companyName").html($("#companyName").html()+" - failed to read - ");
+    }
+    function dataWritten(){
+		   // $("#companyName").html($("#companyName").html()+" - written - ");
+    }
+    function failedToWrite(){
+		   // $("#companyName").html($("#companyName").html()+" - failed to write - ");
+    }
+    
+	    
+    
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.dsquare.DSquarePrime" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="BackgroundMode">
+        <param name="android-package" value="de.appplant.cordova.plugin.background.BackgroundMode" />
+    </feature>
+    <preference name="KeepRunning" value="true" />
+    <feature name="BluetoothStatus">
+        <param name="android-package" value="com.twofivefivekb.android.bluetoothstatus.BluetoothStatus" />
+    </feature>
+    <feature name="ControllerPlugin">
+        <param name="android-package" value="ControllerPlugin" />
+    </feature>
+    <feature name="PowerManagement">
+        <param name="android-package" value="org.apache.cordova.powermanagement.PowerManagement" />
+    </feature>
+    <feature name="BluetoothSerial">
+        <param name="android-package" value="com.megster.cordova.BluetoothSerial" />
+    </feature>
+    <allow-intent href="market:*" />
+    <name>DSquarePrime</name>
+    <description>
+        App to control switches over bluetooth.
+    </description>
+    <author email="deepak.dhage@dsquaresystems.com" href="http://www.dsquaresystems.com">
+        Deepak Dhage
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <icon src="res/icon.png" />
+    <preference name="Orientation" value="landscape" />
+</widget>

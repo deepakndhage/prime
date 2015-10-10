@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>Prime</title>
+
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/custom_slider.css" rel="stylesheet">
+<link href="css/app.css" rel="stylesheet">
+<link href="js/prettify.css" rel="stylesheet">
+<link href="css/bootstrap-switch.css" rel="stylesheet">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="body_img">
+	<div class="container-fluid">
+		
+	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script  type= "application/javascript"
+		src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script  type= "application/javascript" src="js/bootstrap.min.js"></script>
+	<script  type= "application/javascript" src="js/bootstrap-slider.js"></script>
+	<script  type= "application/javascript" src="js/modernizr.js"></script>
+     <script  type= "application/javascript" src="js/prettify.js"></script>
+     <script type= "application/javascript" src="js/bootstrap-switch.js"></script>
+	<script  type= "application/javascript" type= "application/javascript">
+     
+$(function() {
+
+str1= '[{"a":{"state":"1","intensity":"100"}},{"b":{"state":"1","intensity":"50"}},{"c":{"state":"0","intensity":"0"}},{"d":{"state":"1","intensity":"75"}}]';
+str2= '{"u":{"state":"1","intensity":"100"}}';
+alert(str2);
+var obj = jQuery.parseJSON( str1);
+
+console.log(obj[0].c.state);
+
+     });
+     
+     function onDeviceReady() {
+    // do everything here.
+window.prettyPrint && prettyPrint();
+     $("[name='my-checkbox1']").bootstrapSwitch();
+     $("[name='my-checkbox2']").bootstrapSwitch();
+    
+$('#dimmer1-slider').slider(
+    		{
+    	        formater: function(value) {
+    	          return value+'%';
+    	        }
+    	      }
+    		);
+    
+    $('#dimmer2-slider').slider(
+    		{	
+    	        formater: function(value) {
+    	          return value+'%';
+    	        }
+    	      }
+    		);
+    
+   
+    
+    $('#dimmer3-slider').slider(
+    		{
+    	        formater: function(value) {
+    	          return value+'%';
+    	        }
+    	      }
+    		);
+    
+    $('#dimmer4-slider').slider(
+    		{
+    	        formater: function(value) {
+    	          return value+'%';
+    	        }
+    	      }
+    		);
+    
+    calculateSaving();
+$('#saveDiv').click(function(){
+			
+			//prepare a json for all bulbs
+			//var one; var two; var three; var four; var five; var six;
+			dimmer1 = parseInt($('#dimmer1-slider-perc').html());
+			one = "";
+			if(dimmer1>0){
+				one = '"1":{"state":"1","intensity":"'+dimmer1+'"}';
+			}
+			else{
+				one = '"1":{"state":"0","intensity":"0"}';
+			}
+			dimmer2 = parseInt($('#dimmer2-slider-perc').html());
+			if(dimmer2>0)
+				two = '"2":{"state":"1","intensity":"'+dimmer2+'"}';
+			else
+				two = '"2":{"state":"0","intensity":"0"}';
+			dimmer3 = parseInt($('#dimmer3-slider-perc').html());
+			if(dimmer3>0)
+				three = '"3":{"state":"1","intensity":"'+dimmer3+'"}';
+			else
+				three = '"3":{"state":"0","intensity":"0"}';
+			dimmer4 = parseInt($('#dimmer4-slider-perc').html());
+			if(dimmer4>0)
+				four = '"4":{"state":"1","intensity":"'+dimmer4+'"}';
+			else
+				four = '"4":{"state":"0","intensity":"0"}';
+
+			switch1 = isOn('#bulb5-Switch-img')?100:0;
+			if(switch1>0)
+				five = '"5":{"state":"1","intensity":"'+switch1+'"}';
+			else
+				five = '"5":{"state":"0","intensity":"0"}';
+    			switch2 = isOn('#bulb6-Switch-img')?100:0;
+			if(switch2>0)
+				six = '"6":{"state":"1","intensity":"'+switch2+'"}';
+			else
+				six = '"6":{"state":"0","intensity":"0"}';
+			count = '"count":"6"';
+			moodJSON = '{'+one+','+two+','+three+','+four+','+five+','+six+','+count+'}';
+			$('#companyName').html(moodJSON);
+			
+			responseJSON =  '[{'+one+'},{'+two+'},{'+three+'},{'+four+'},{'+five+'},{'+six+'}]';
+			$('#logo').html(responseJSON);
+			/*$.each($.parseJSON(responseJSON), function(idx, obj) {
+	$('#logo').html($('#logo').html()+" - "idx+" - "+obj.state);
+});*/
+			
+        	        ControllerPlugin.saveMood("saveMood",moodJSON);
+         
+         
+         
+         });
+   
+        
+    function calculateSaving(){
+
+      	count = 6;
+    	dimmer1 = parseInt($('#dimmer1-slider-perc').html());
+    	/* if(dimmer1>0){
+    		count++;
+
+    	} */
+    	//console.log('dimmer1 = '+dimmer1);
+    	dimmer2 = parseInt($('#dimmer2-slider-perc').html());
+    	/* if(dimmer2>0){
+
+    		count++;
+
+    	} */
+    	//console.log('dimmer2 = '+dimmer2);
+    	dimmer3 = parseInt($('#dimmer3-slider-perc').html());
+    	/* if(dimmer3>0){
+    		count++;
+
+    	} */
+    	//console.log('dimmer3 = '+dimmer3);
+    	dimmer4 = parseInt($('#dimmer4-slider-perc').html());
+    	/* if(dimmer4>0){
+    		count++;
+    	} */
+    	//console.log('dimmer4 = '+dimmer4);
+    	switch1 = isOn('#bulb5-Switch-img')?100:0;
+    	switch2 = isOn('#bulb6-Switch-img')?100:0;
+    	/* if($('#bulb5-Switch-img').attr('src') && $('#bulb5-Switch-img').attr('src')=="./images/bulb-on.png"){
+    		switch1 = 100;
+    	} */
+    	/* if($('#bulb6-Switch-img').attr('src') && $('#bulb6-Switch-img').attr('src')=="./images/bulb-on.png"){
+    		switch2 = 100;
+    	} */
+    	switch1 = parseInt(switch1);
+    	/* if(switch1>0){
+    		count++;
+    	} */
+    	switch2 = parseInt(switch2);
+    	/* if(switch2>0){
+    		count++;
+    	} */
+    	//console.log('switch1 = '+switch1);
+    	//console.log('switch2 = '+switch2);
+    	burning = (dimmer1+dimmer2+dimmer3+dimmer4+switch1+switch2);
+    	//console.log('burning = '+burning+' out of '+count*100);
+    	burningPerc = 0;
+    	maxBurning = 100;
+    	if(parseInt(burning) == 0 || parseInt(count) == 0){
+    		burningPerc = 0;
+    		maxBurning = 100;
+    	}
+    	else{
+    		burningPerc = burning/count;
+    	}
+    	//console.log('burning = '+(burningPerc));
+    	
+    	$('#energySaving').html(parseInt(maxBurning-burningPerc)+'%');
+   	 
+    }
+
+        function isOn(dimmer){
+        	if($(dimmer).attr('src') && $(dimmer).attr('src')=="./images/bulb-on.png"){
+        		//console.log('dimmer - '+dimmer+' - true');
+        		return true;
+        	}
+        	else if($(dimmer).attr('src') && $(dimmer).attr('src')=="./images/bulb-off.png"){
+        		//console.log('dimmer - '+dimmer+' - false');
+        		return false;
+        	}
+        }
+    function bulbOnOff(dimmer, slider){
+    	if(isOn(dimmer)){
+       	 bulbOnOffOnFlag(dimmer, slider,0,1);
+        }
+        else if(!isOn(dimmer)){
+       	 bulbOnOffOnFlag(dimmer, slider,1,1);
+        }
+    	//dimmer1 = parseInt($(dimmer).slider('getValue')[0].value);
+    	//calculateSaving();
+    	
+    }
+    function bulbOnOffOnFlag(dimmer, slider, flag, updateDB){
+    	if(isOn(dimmer) && flag==0){
+       	 $(dimmer).attr('src','./images/bulb-off.png') 
+       	 if(slider && $(slider)){
+       		$(slider).slider('setValue',0);
+		$(slider+'-perc').html(0)
+		if(updateDB==1){
+			ControllerPlugin.saveState('update', $(slider+"-id").html(), 0,0,1);
+		}
+				
+       	 }
+        }
+        else if(!isOn(dimmer) && flag==1){
+       	 $(dimmer).attr('src','./images/bulb-on.png') 
+       	 if(slider && $(slider)){
+       		$(slider).slider('setValue',100);
+		$(slider+'-perc').html(100)
+		if(updateDB==1){
+			ControllerPlugin.saveState('update', $(slider+"-id").html(), 1,100,2);		
+		}
+       	 }
+        }
+    	calculateSaving();
+    	
+    }
+    function allOff(){
+    		bulbOnOffOnFlag('#dimmer1-slider-bulb','#dimmer1-slider',0,0);
+		bulbOnOffOnFlag('#dimmer2-slider-bulb','#dimmer2-slider',0,0);
+		bulbOnOffOnFlag('#dimmer3-slider-bulb','#dimmer3-slider',0,0);
+		bulbOnOffOnFlag('#dimmer4-slider-bulb','#dimmer4-slider',0,0);
+		switchOnOffOnFlag('#bulb5-Switch',0,0);
+		switchOnOffOnFlag('#bulb6-Switch',0,0);
+		ControllerPlugin.allOff('allOff', 6, 13);
+    }
+    $('#bulb1Div').click(
+            	function(){
+        	        bulbOnOff('#dimmer1-slider-bulb','#dimmer1-slider');
+                }
+        );
+    $('#bulb2Div').click(
+        	function(){
+        		 bulbOnOff('#dimmer2-slider-bulb','#dimmer2-slider');
+            }
+        		
+        );
+    
+    $('#bulb3Div').click(
+        	function(){
+        		 bulbOnOff('#dimmer3-slider-bulb','#dimmer3-slider');
+            }
+        		
+        );
+    
+    $('#bulb4Div').click(
+        	function(){
+        		 bulbOnOff('#dimmer4-slider-bulb','#dimmer4-slider');
+            }
+        		
+        );
+        
+    $('#powerBtn').click(
+        	function(){
+        		 allOff();
+            }
+        		
+        );
+    
+    $('#bulb5Div').click(
+        	function(){
+        		switchOnOff('#bulb5-Switch');
+            }
+        		
+        );
+    $('#bulb6Div').click(
+    		
+        	function(){
+        			switchOnOff('#bulb6-Switch');
+            }
+        	
+        );
+    function switchOnOff(switchId){
+    	//$(switchId).click();
+			
+    	         //change image - on/off
+    	        // if($(switchId+'-img').attr('src') && $(switchId+'-img').attr('src')=="./images/bulb-on.png"){
+    	         if(isOn(switchId+'-img')){
+    	        	 switchOnOffOnFlag(switchId,0,1);
+    	         }
+    	         else if(!isOn(switchId+'-img')){
+    	        	 switchOnOffOnFlag(switchId,1,1);
+    	         }
+    	         //calculateSaving();
+    }
+    function reloadAll(result){
+        $('#logo').html('hago - '+result);
+    }
+    function switchOnOffOnFlag(switchId, flag, updateDB){
+    	
+			
+    	         //change image - on/off
+    	         if(flag==0 && isOn(switchId+'-img')){
+    	         	$(switchId).click();
+    	        	 	$(switchId+'-img').attr('src','./images/bulb-off.png');
+				if(updateDB==1){
+					ControllerPlugin.saveState('update', $(switchId+"-id").html(), 0,0,3);
+				}
+						//ControllerPlugin.showToast('showMessage', '3');
+    	         }
+    	         else if(flag==1 && !isOn(switchId+'-img')){
+    	         	$(switchId).click();
+    	        	 	$(switchId+'-img').attr('src','./images/bulb-on.png');
+				if(updateDB==1){
+					ControllerPlugin.saveState('update', $(switchId+"-id").html(), 1,100,4);
+				}
+						//ControllerPlugin.showToast('showMessage', '4');
+    	         }
+    	         calculateSaving();
+    }
+$('#playDiv').click(
+    		function(){
+        	readCurrentState();
+        	}
+        );
+    function readCurrentState(){
+    	ControllerPlugin.reloadData("reload");
+    }
+}
+    </script>
+</body>
+</html>
