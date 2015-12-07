@@ -1,0 +1,59 @@
+INFO:homeassistant.loader:Loaded notify.pushbullet from homeassistant.components.notify.pushbullet
+ERROR:homeassistant.components.notify.pushbullet:Unable to import pushbullet. Did you maybe not install the 'pushbullet.py' package?
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/site-packages/homeassistant/components/notify/pushbullet.py", line 43, in get_service
+    from pushbullet import PushBullet, InvalidKeyError  # noqa
+ImportError: No module named 'pushbullet'
+ERROR:homeassistant.components.notify:Failed to initialize notification service pushbullet
+ERROR:homeassistant.bootstrap:component notify failed to initialize
+INFO:homeassistant.core:Bus:Handling <Event component_loaded[L]: component=history>
+
+
+
+sudo pip3 install pushbullet.py
+
+
+Configuring hosted ownTracks
+http://owntracks.org/booklet/features/hosted/
+
+For configuring hosted ownTracks in home-assistant
+http://owntracks.org/booklet/tech/proghosted/
+
+
+User
+    deepakndhage
+Device
+    OnePlusOne
+Token
+    bpr45e5323wxj
+
+
+User
+    anuradhaa2007
+Device
+    MotoG
+Token
+    2mhq8ct5kb2nu
+
+User
+    deepakndhage
+Device
+    RaspberryPi
+Token
+    2ddazvndfcchy
+
+Creating zones
+https://home-assistant.io/components/zone/
+
+Home
+18.5845075
+73.7825086
+
+Work
+18.5667767
+73.7697118
+
+Kuroli
+17.601476, 
+74.393836
+
