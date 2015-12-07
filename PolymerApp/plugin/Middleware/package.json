@@ -1,0 +1,18 @@
+{
+    "version": "0.1",
+    "name": "com.dsquare.ControllerPlugin",
+    "cordova_name": "Controller Plugin",
+    "description": "Controller Plugin For DSquare Systems",
+    "license": "Apache 2.0",
+    "repo": "",
+    "issue": "",
+    "keywords": [
+        "cordova",
+        "dsquare"
+    ],
+    "platforms": [
+        "android",
+    ],
+    "engines": [],
+    "englishdoc": ""
+}
